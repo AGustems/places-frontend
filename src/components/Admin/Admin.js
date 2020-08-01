@@ -11,8 +11,8 @@ export class Admin extends Component {
     render() {
           const placeEdit =  this.props.places.map((place) => {
        
-                <div>
-               <h4>{this.place.name}</h4>
+               return <div>
+               <h4>{place.name}</h4>
                <button> Edit</button>
                <button>Delete</button>
                 </div>
