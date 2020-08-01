@@ -4,7 +4,6 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import Homepage from './components/Homepage';
 import Navbar from './components/Navbar';
-import PlaceList from './components/PlaceList';
 
 function App() {
   return (
