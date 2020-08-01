@@ -1,15 +1,24 @@
 import React, { Component } from 'react'
+import axios from "axios"
 
 export class Admin extends Component {
     constructor(props) {
         super (props)
         this.state = {
-
         }
-
     }
+    componentDidMount() {
+        axios.get(`http://localhost:5000/api/places`)
+          .then(res => {
+            const places = res.data;
+            this.setState({ places });
+          })
+      }
+    
+
+
     render() {
-          const placeEdit =  this.props.places.map((place) => {
+          const placeEdit =  this.state.places.map((place) => {
        
                return <div>
                <h4>{place.name}</h4>

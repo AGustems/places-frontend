@@ -37,6 +37,13 @@
   }
 }
 
+.infoImg{
+  width: 30%;
+}
+.infoTxt{
+  width: 50%;
+}
+
 .form{
   margin: 15px 600px;
 }
