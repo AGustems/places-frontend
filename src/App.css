@@ -37,6 +37,21 @@
   }
 }
 
-.form{
-  margin: 15px 600px;
+.form {
+  margin: 15px;
+  width: 60%;
+}
+
+.form-complete-load {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+
+.subtext {
+  color: #6c757d;
 }
