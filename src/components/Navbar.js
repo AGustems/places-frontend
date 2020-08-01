@@ -12,16 +12,16 @@ export class Navbar extends Component {
                     {/* <!-- Links --> */}
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                        <a className="nav-link" href="/">Places</a>
+                        <a className="nav-link" href="/places">Places</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="/">List</a>
+                        <a className="nav-link" href="/list">List</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="/">Search</a>
+                        <a className="nav-link" href="/search">Search</a>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="/">Admin</a>
+                        <a className="nav-link" href="/admin">Admin</a>
                         </li>
 
                     
