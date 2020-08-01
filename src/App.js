@@ -8,6 +8,7 @@ import AddPlaces from './components/AddPlaces';
 import Admin from './components/Admin/Admin';
 import EditForm from './components/EditForm';
 import Search from './components/Search';
+import PlaceList from "./components/PlaceList";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route exact path = "/admin" render= {(props) => <Admin {...props} />}/>
         <Route path="/edit/:id" render={(props) => <EditForm {...props} />} />
         <Route exact path="/search" render={(props) => <Search {...props} />} />
+        <Route exact path="/list" render={(props) => <PlaceList {...props} />} />
       </Switch>
     </div>
   );

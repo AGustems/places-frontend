@@ -8,16 +8,11 @@ export class Navbar extends Component {
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
           {/* <!-- Brand --> */}
           <a className="navbar-brand" href="/">
-            Logo
+            PLACES
           </a>
 
           {/* <!-- Links --> */}
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link" href="/places">
-                Places
-              </a>
-            </li>
             <li className="nav-item">
               <a className="nav-link" href="/list">
                 List
