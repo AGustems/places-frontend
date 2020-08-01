@@ -12,16 +12,17 @@ export class AddPlaces extends Component {
             direccion: '',
             name:'',
             description:'',
-            imageUrl: '',
-            archivo:null
+            file:null
         }
     }
     handleSave = (e)=>{
         e.preventDefault()
+        console.log(this.state)
         const uploadData = new FormData()
-        uploadData.append('imageUrl',this.state.archivo)
-        uploadData.append('imageUrl',this.state.name)
-        uploadData.append('imageUrl',this.state.description)
+        uploadData.append('imageUrl',this.state.file)
+        uploadData.append('name',this.state.name)
+        uploadData.append('description',this.state.description)
+        console.log(uploadData)
         axios.post('http://localhost:5000/api/places', uploadData).then(
             response=>{
                 console.log('File upload successful:', response.data)
@@ -35,9 +36,9 @@ export class AddPlaces extends Component {
         })
     }
 
-    handleFileUpload=(e)=>{
+   handleFileUpload=(e)=>{
         console.log('File upload...')
-        this.setState({archivo: e.target.files[0]})
+        this.setState({file: e.target.files[0]})
     }
     handleSubmit = (e) => {
         e.preventDefault()
@@ -89,7 +90,7 @@ export class AddPlaces extends Component {
                 <h1>File Upload</h1>
                 <form onSubmit={this.handleSave}>
                     <label>Título</label>
-                    <input type='text' name='title' value={this.state.title} onChange={this.handleChange}/>
+                    <input type='text' name='name' value={this.state.name} onChange={this.handleChange}/>
                     <label>Descripción</label>
                     <input type='text' name='description' value={this.state.description} onChange={this.handleChange}/>
                     <label>Foto</label>
