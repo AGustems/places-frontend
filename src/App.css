@@ -55,3 +55,15 @@
 .subtext {
   color: #6c757d;
 }
+
+.infoImg{
+  width: 30%;
+}
+.infoTxt{
+  width: 50%;
+}
+
+.form{
+  margin: 15px 600px;
+}
+
