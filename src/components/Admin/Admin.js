@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 export class Admin extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,7 @@ export class Admin extends Component {
       return (
         <div>
           <h4>{place.name}</h4>
-          <button> Edit</button>
+          <Link to={"/edit/" + place._id}>Edit</Link>
           <button>Delete</button>
         </div>
       );
