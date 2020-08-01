@@ -38,7 +38,7 @@ export class AddPlaces extends Component {
                 this.setState({...this.state,loading: false,saved:true})
                 setTimeout(function () {
                     history.push(`/`);
-                     }, 6000);
+                     }, 5000);
             }
         )
     }
@@ -106,11 +106,10 @@ export class AddPlaces extends Component {
         }
         if (this.state.loading) {
         return <LoadingInfo />;
-        } else if (this.state.completed) {
+        } else if (this.state.saved) {
         return <CompleteSubmit />;
-        } else {
-     
-        return (
+        } else{
+            return (
             <div>
                 <h1>Add Place</h1>
                 <div>
@@ -122,9 +121,9 @@ export class AddPlaces extends Component {
                     <input type='text' name='description' value={this.state.description} onChange={this.handleChange}/>
                     <label>Foto</label>
                     <input type='file' name='imageUrl' onChange={this.handleFileUpload}/>
-                    
                     <input type='submit' value='Save'/>
                 </form>
+                </div>
                 <div style={{width:'600px', height:'400px'}}>
                     <GoogleMapReact
                         key={this.state.direccion}
@@ -145,9 +144,9 @@ export class AddPlaces extends Component {
                             <input type="submit" value="buscar" />
                         </form>
                     </div>
-                </div>
-            </div>
-        )}
+                    </div>
+        )
+        }
     }
 }
 
