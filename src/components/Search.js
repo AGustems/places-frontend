@@ -16,16 +16,12 @@ export class Search extends Component {
 
   handleSubmit = event =>  {
       event.preventDefault()
+      let firstPlace = {}
         axios.get("http://localhost:5000/api/address?search=" + this.state.search)
         .then(response => {
             console.log(response.data)
-            const results = response.data.candidates.map((place, index) => (
-                <div key={index}>
-                    <h3>{place.formatted_address}</h3>
-                </div>
-            ))
-
-            this.setState({...this.state, results: results})
+            firstPlace = response.data.candidates[0]
+            console.log(firstPlace)
         })
   }
 

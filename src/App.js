@@ -13,6 +13,9 @@ import EditForm from './components/EditForm';
 
 import Search from './components/Search';
 
+import PlaceList from "./components/PlaceList";
+
+
 function App() {
   return (
     <div>
@@ -28,6 +31,7 @@ function App() {
 
         <Route exact path="/search" render={(props) => <Search {...props} />} />
 
+        <Route exact path="/list" render={(props) => <PlaceList {...props} />} />
       </Switch>
     </div>
   );

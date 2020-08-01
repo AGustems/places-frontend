@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Carrousel from "./Carrousel";
+import Highlights from "./Highlights";
 
 export class Homepage extends Component {
-    render() {
-        return (
-            <div>
-                <h1>homepage</h1>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Carrousel />
+        <h1>Places highlights</h1>
+        <Highlights />
+      </div>
+    );
+  }
 }
 
-export default Homepage
+export default Homepage;
