@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CompleteSubmit from "./CompleteSubmit";
+import LoadingInfo from "./LoadingInfo";
 
 class EditForm extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class EditForm extends Component {
       imageUrl: "",
       file: null,
       completed: false,
+      loading: false,
     };
   }
 
@@ -43,6 +45,11 @@ class EditForm extends Component {
     uploadData.append("name", this.state.name);
     uploadData.append("description", this.state.description);
 
+    this.setState({
+      ...this.state,
+      loading: true,
+    });
+
     axios
       .put(
         `http://localhost:5000/api/places/${this.props.match.params.id}`,
@@ -52,6 +59,7 @@ class EditForm extends Component {
         console.log("Updated done successfully!", response.data);
         this.setState({
           ...this.state,
+          loading: false,
           completed: true,
         });
         setTimeout(function () {
@@ -69,7 +77,9 @@ class EditForm extends Component {
   };
 
   render() {
-    if (this.state.completed) {
+    if (this.state.loading) {
+      return <LoadingInfo />;
+    } else if (this.state.completed) {
       return <CompleteSubmit />;
     } else {
       return (
