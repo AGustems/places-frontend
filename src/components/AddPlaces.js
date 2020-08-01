@@ -22,10 +22,13 @@ export class AddPlaces extends Component {
         uploadData.append('imageUrl',this.state.file)
         uploadData.append('name',this.state.name)
         uploadData.append('description',this.state.description)
+        uploadData.append('lat',this.state.lat)
+        uploadData.append('lng',this.state.lng)
         console.log(uploadData)
         axios.post('http://localhost:5000/api/places', uploadData).then(
             response=>{
                 console.log('File upload successful:', response.data)
+                
             }
         )
     }
@@ -43,7 +46,7 @@ export class AddPlaces extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         // buscar la direccion y mostrar un PIN en el mapa con la dirección
-        axios.get("http://localhost:3000/api/address?search=" + this.state.search)
+        axios.get("http://localhost:5000/api/address?search=" + this.state.search)
         .then(response => {
             console.log(response.data)
             // volver a renderizar el mapa con CENTER = lat, lng y un PIN =  lat, lng
@@ -95,29 +98,30 @@ export class AddPlaces extends Component {
                     <input type='text' name='description' value={this.state.description} onChange={this.handleChange}/>
                     <label>Foto</label>
                     <input type='file' name='imageUrl' onChange={this.handleFileUpload}/>
-                    <div>
-                    <GoogleMapReact
-                    key={this.state.direccion}
-                    bootstrapURLKeys={ { key: 'AIzaSyBT0RpL1Yw7Q5WC4WemS6hyJ_Y3PnSUyfY'} }
-                    defaultCenter={center}
-                    defaultZoom={zoom}
-                    options={getMapOptions}
-                    yesIWantToUseGoogleMapApiInternals
-                    onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
-                    />
-                    <form onSubmit={this.handleSubmit}>
-                        <label>Direccion</label>
-                        <input type="text"
-                            name="search"
-                            value={this.state.search}
-                            onChange={this.handleChange}
-                            placeholder="informar la direccion" />
-                        <input type="submit" value="buscar" />
-                    </form>
-                </div>
+                    
                     <input type='submit' value='Save'/>
                 </form>
-            </div>
+                <div style={{width:'600px', height:'400px'}}>
+                    <GoogleMapReact
+                        key={this.state.direccion}
+                        bootstrapURLKeys={ { key: 'AIzaSyBT0RpL1Yw7Q5WC4WemS6hyJ_Y3PnSUyfY'} }
+                        defaultCenter={center}
+                        defaultZoom={zoom}
+                        options={getMapOptions}
+                        yesIWantToUseGoogleMapApiInternals
+                        onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
+                        />
+                        <form onSubmit={this.handleSubmit}>
+                            <label>Direccion</label>
+                            <input type="text"
+                                name="search"
+                                value={this.state.search}
+                                onChange={this.handleChange}
+                                placeholder="informar la direccion" />
+                            <input type="submit" value="buscar" />
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     }
