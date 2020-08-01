@@ -31,6 +31,11 @@ export class Navbar extends Component {
               </a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="/add">
+                Add place
+              </a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="/search">
                 Search
               </a>
