@@ -16,10 +16,7 @@ export class Search extends Component {
 
   handleSubmit = event =>  {
       event.preventDefault()
-<<<<<<< HEAD
-=======
       let firstPlace = {}
->>>>>>> a47d18363e880a572b1643fe11f7118e20dcb858
         axios.get("http://localhost:5000/api/address?search=" + this.state.search)
         .then(response => {
             console.log(response.data)
