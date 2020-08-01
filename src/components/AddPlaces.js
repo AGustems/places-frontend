@@ -37,7 +37,7 @@ export class AddPlaces extends Component {
                 console.log('File upload successful:', response.data)
                 this.setState({...this.state,loading: false,saved:true})
                 setTimeout(function () {
-                    history.push(`/`);
+                    history.push(`/list`);
                      }, 5000);
             }
         )
@@ -121,7 +121,7 @@ export class AddPlaces extends Component {
                     <input type='text' name='description' value={this.state.description} onChange={this.handleChange}/>
                     <label>Foto</label>
                     <input type='file' name='imageUrl' onChange={this.handleFileUpload}/>
-                    <input type='submit' value='Save'/>
+                    <input type='submit' value='Guardar'/>
                 </form>
                 </div>
                 <div style={{width:'600px', height:'400px'}}>
