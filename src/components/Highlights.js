@@ -17,10 +17,22 @@ export class Highlights extends Component {
   render() {
     const places = this.state.places.map((place) => {
       return (
-        <div key={place._id}>
-          <h1>{place.name}</h1>
+        <div className="card" style={{ width: "18rem" }} key={place._id}>
+          <img className="card-img-top" src={place.imageUrl} alt={place.name} />
+          <div className="card-body">
+            <h5 className="card-title">{place.name}</h5>
+            <p className="card-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua
+            </p>
+          </div>
         </div>
       );
+      //   return (
+      //     <div key={place._id}>
+      //       <h1>{place.name}</h1>
+      //     </div>
+      //   );
     });
     return <div>{places}</div>;
   }
