@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios"
+import axios from "axios";
 
 export class Search extends Component {
   constructor(props) {
@@ -7,6 +7,10 @@ export class Search extends Component {
     this.state = {
       search: "",
       oneResult: "",
+      miles: 100,
+      lat: 0,
+      lng: 0,
+      allResults: []
     };
   }
 
@@ -14,16 +18,32 @@ export class Search extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = event =>  {
-      event.preventDefault()
-        axios.get("http://localhost:5000/api/address?search=" + this.state.search)
-        .then(response => {
-            this.setState({...this.state, oneResult: response.data.candidates[0]})
-        })
-  }
+  handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .get("http://localhost:5000/api/address?search=" + this.state.search)
+      .then((response) => {
+        this.setState({
+          ...this.state,
+          oneResult: response.data.candidates[0],
+          lat: response.data.candidates[0].geometry.location.lat,
+          lng: response.data.candidates[0].geometry.location.lng,
+        });
+      });
+    axios
+      .get(
+        "http://localhost:5000/api/address?search=" + this.state.search,
+        this.state.miles,
+        this.state.lat,
+        this.state.lng
+      )
+      .then((response) => this.setState({...this.state, allResults: response.data}));
+  };
 
   render() {
-
+      const allResults = this.state.allResults.map((place, index) => (
+          <h2>{index}</h2>
+      ))
     return (
       <div className="container mt-4">
         <h1>Search</h1>
