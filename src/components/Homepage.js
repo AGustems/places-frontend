@@ -8,7 +8,7 @@ export class Homepage extends Component {
     return (
       <div>
         <Carrousel />
-        <h1>Places highlights</h1>
+        <h1 className="underlined">Places highlights</h1>
         <Highlights />
       </div>
     );

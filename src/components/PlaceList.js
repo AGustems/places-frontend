@@ -26,23 +26,22 @@ export class PlaceList extends Component {
   }
   render() {
     const places = this.state.places.map((place) => (
-      <div key={place._id}>
-        <div className="infoImg">
-          <img src={place.imageUrl} alt="foto del sitio" />{" "}
+      <div className="card" key={place._id}>
+        <img
+          className="card-img-top"
+          src={place.imageUrl}
+          alt="foto del sitio"
+        />
+        <div className="card-body">
+          <h5 className="card-title">{place.name}</h5>
+          <p className="card-text">{place.description}</p>
         </div>
-        <div className="infoTxt">
-          <h3>{place.name}</h3>
-          <br></br>
-          <p>{place.description}</p>{" "}
-        </div>{" "}
       </div>
     ));
     return (
       <div>
-        <div className="place">
-          <h1>Place I have been</h1>
-          {places}
-        </div>
+        <h1 className="underlined">My Experiences</h1>
+        <div className="container-highlights">{places}</div>
       </div>
     );
   }

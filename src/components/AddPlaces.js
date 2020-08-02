@@ -14,6 +14,7 @@ export class AddPlaces extends Component {
       direccion: "",
       name: "",
       description: "",
+      candidates: [],
       saved: false,
       loading: false,
     };
@@ -32,6 +33,7 @@ export class AddPlaces extends Component {
       ...this.state,
       loading: true,
     });
+
     axios
       .post("http://localhost:5000/api/places", uploadData)
       .then((response) => {
@@ -57,18 +59,16 @@ export class AddPlaces extends Component {
   };
 
   handleFileUpload = (e) => {
-    console.log("File upload...");
     this.setState({ file: e.target.files[0] });
   };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    // buscar la direccion y mostrar un PIN en el mapa con la dirección
     axios
       .get("http://localhost:5000/api/address?search=" + this.state.search)
       .then((response) => {
-        console.log(response.data);
-        // volver a renderizar el mapa con CENTER = lat, lng y un PIN =  lat, lng
         this.setState({
+          candidates: response.data,
           lat: response.data.candidates[0].geometry.location.lat,
           lng: response.data.candidates[0].geometry.location.lng,
           direccion: response.data.candidates[0].formatted_address,

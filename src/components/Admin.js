@@ -45,27 +45,35 @@ export class Admin extends Component {
   render() {
     const placeEdit = this.state.places.map((place) => {
       return (
-        <div key={place._id}>
-          <h4>{place.name}</h4>
-          <Link className="btn btn-warning" to={"/edit/" + place._id}>
-            Edit
-          </Link>
-          <button
-            className="btn btn-danger"
-            onClick={() => this.handleDelete(place._id)}
-          >
-            Delete
-          </button>
-          <button onClick={() => this.handleFavourite(place)} className="star">
-            {place.highlight ? "★" : "☆"}
-          </button>
+        <div className="card" key={place._id}>
+          <img className="card-img-top" src={place.imageUrl} alt={place.name} />
+          <div className="card-body">
+            <h5 className="card-title">{place.name}</h5>
+            <div className="card-buttons">
+              <Link className="btn btn-warning" to={"/edit/" + place._id}>
+                Edit
+              </Link>
+              <button
+                className="btn btn-danger"
+                onClick={() => this.handleDelete(place._id)}
+              >
+                Delete
+              </button>
+              <button
+                onClick={() => this.handleFavourite(place)}
+                className="star"
+              >
+                {place.highlight ? "★" : "☆"}
+              </button>
+            </div>
+          </div>
         </div>
       );
     });
     return (
       <div>
-        <h2>Manage your places</h2>
-        {placeEdit}
+        <h2 className="underlined">Manage your places</h2>
+        <div className="container-highlights">{placeEdit}</div>
       </div>
     );
   }
