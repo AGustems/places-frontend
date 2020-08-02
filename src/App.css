@@ -56,14 +56,44 @@
   color: #6c757d;
 }
 
-.infoImg{
+.infoImg {
   width: 30%;
 }
-.infoTxt{
+.infoTxt {
   width: 50%;
 }
 
-.form{
-  margin: 15px 600px;
+.form {
+  margin: 15px;
 }
 
+.form-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.container-split {
+  width: 50%;
+}
+
+.star {
+  padding: 0px;
+  margin: 0px;
+  font-size: 40px;
+  color: darkgoldenrod;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+star:before {
+  content: "\2606";
+  position: absolute;
+  visibility: visible;
+}
+
+star:checked:before {
+  content: "\2606";
+  position: absolute;
+}

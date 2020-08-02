@@ -9,25 +9,25 @@ export class PlaceList extends Component {
     };
   }
 
-  componentDidMount (){
-      this.places()
+  componentDidMount() {
+    this.places();
   }
 
   myInfo = () => {
-    this.setState({ changeInfo: !this.state.changeInfo });
+    this.setState({
+      changeInfo: !this.state.changeInfo,
+    });
   };
+
   places() {
     axios.get("http://localhost:5000/api/places/").then((response) => {
-        console.log(response.data)
-      this.setState({
-        places: response.data,
-      });
+      this.setState({ places: response.data });
     });
   }
   render() {
     const places = this.state.places.map((place) => (
-      <div key="mypalce">
-        <div classname="infoImg">
+      <div key={place._id}>
+        <div className="infoImg">
           <img src={place.imageUrl} alt="foto del sitio" />{" "}
         </div>
         <div className="infoTxt">
